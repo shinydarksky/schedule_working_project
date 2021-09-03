@@ -9,6 +9,7 @@ export default function ManageUser() {
     const [isAddUser, setIsAddUser] = useState(false)
     const [showFromEdit, setShowFromEdit] = useState(false)
     const [editUser, setEditUser] = useState()
+    
     useEffect(() => {
         axios.get('http://localhost:5000/manage/staff')
             .then((data) => {

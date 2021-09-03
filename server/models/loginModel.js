@@ -4,7 +4,8 @@ const loginSchema = mongoose.Schema({
     username:String,
     password:String,
     isadmin:Boolean,
-    informodel:{type:mongoose.Schema.Types.ObjectId}
+    fullname:{ type:String, default: ''},
+    salary:{type:Number,default:30000}
 })
 
 export default  mongoose.model('loginData',loginSchema)

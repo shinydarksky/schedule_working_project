@@ -1,42 +1,50 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-export default function EditUser({ userData, onClickCancel, onEditUser, showFromEdit, deleteUser}) {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+export default function EditUser({ userData, onClickCancel, onEditUser, showFromEdit, deleteUser }) {
     const [isAdmin, setIsAdmin] = useState(false)
+    let [userUpdate, setUserUpdate] = useState({
+        fullname: '',
+        username: '',
+        password: '',
+        isadmin: false,
+        salary: 0
+    })
 
     useEffect(() => {
         if (userData) {
-            setUsername(userData.username)
-            setPassword(userData.password)
+            setUserUpdate({
+                fullname: userData.fullname,
+                username: userData.username,
+                password: userData.password,
+                salary: userData.salary
+            })
             setIsAdmin(userData.isadmin)
         }
-    }, [setUsername, setPassword, userData])
+    }, [setUserUpdate, userData])
 
-    function onChangeUsername(e) {
-        setUsername(e.target.value)
-    }
-
-    function onChangePassword(e) {
-        setPassword(e.target.value)
+    function onChangeText(e) {
+        let temp = {}
+        temp[e.target.name] = e.target.value
+        setUserUpdate({ ...userUpdate, ...temp })
     }
 
     function onSubmitEdit(e) {
         e.preventDefault()
-        const userUpdate = {
-            username: username,
-            password: password,
+        const userUpdateData = {
+            username:  userUpdate.username,
+            password:  userUpdate.password,
             isAdmin: isAdmin,
             _id: userData._id
         }
-        onEditUser(userUpdate)
+        console.log(userUpdateData)
+        onEditUser(userUpdateData)
     }
 
     function onClickIsAdmin(e) {
         setIsAdmin(e.target.checked)
     }
 
-    function onClickDelete(e){
+    function onClickDelete(e) {
         e.preventDefault()
         deleteUser(userData)
     }
@@ -46,14 +54,26 @@ export default function EditUser({ userData, onClickCancel, onEditUser, showFrom
         <form onSubmit={onSubmitEdit}>
             <div className="edit-item">
                 <label >
+                    Tên nhân viên
+                    <input type="text" name="fullname" value={userUpdate.fullname} onChange={onChangeText} />
+                </label>
+            </div>
+            <div className="edit-item">
+                <label >
                     Tên tài khoản
-                    <input type="text" name="username" value={username} onChange={(onChangeUsername)} />
+                    <input type="text" name="username" value={userUpdate.username} onChange={(onChangeText)} />
                 </label>
             </div>
             <div className="edit-item">
                 <label>
                     Mật khẩu
-                    <input type="text" name="text" value={password} onChange={(onChangePassword)} />
+                    <input type="text" name="password" value={userUpdate.password} onChange={(onChangeText)} />
+                </label>
+            </div>
+            <div className="edit-item">
+                <label>
+                    Lương mỗi ca
+                    <input type="text" name="salary" value={userUpdate.salary} onChange={(onChangeText)} />
                 </label>
             </div>
             <div className="btn-checkbox">
@@ -62,12 +82,12 @@ export default function EditUser({ userData, onClickCancel, onEditUser, showFrom
                     <span className="checkmark"></span>
                 </label>
             </div>
-            <div id="group-btn"> 
+            <div id="group-btn">
                 <button className="btn-edit">Chỉnh sửa</button>
                 <button className="btn-edit" onClick={onClickDelete}>Xóa</button>
                 <button className="btn-edit" onClick={onClickCancel}>Hủy</button>
             </div>
-            <div >Thông tin chi tiết...</div>
+
         </form>
     </div>
 

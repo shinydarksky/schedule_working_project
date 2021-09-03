@@ -17,18 +17,21 @@ export default function AddSchedule(props) {
 
     function onSubmitAddSchedule(e) {
         e.preventDefault()
-        const weekName = e.target.weekName.value
-
-        let staffId = []
-        for (let check of e.target.user_select) {
-            if (check.checked)
-                staffId.push(check.value)
+        try {
+            const weekName = e.target.weekName.value
+            let staffId = []
+            for (let check of e.target.user_select) {
+                if (check.checked)
+                    staffId.push(check.value)
+            }
+            const postData = {
+                weekName: weekName,
+                staffId: staffId
+            }
+            props.onAddSChedule(postData)
+        } catch (error) {
+            alert('Lỗi vui lòng kiểm tra lại danh sách nhân viên')
         }
-        const postData = {
-            weekName: weekName,
-            staffId: staffId
-        }
-        props.onAddSChedule(postData)
     }
 
     let fromAddSchedule = <div id="myModal" className="modal" onClick={props.clickCloseFrom}>

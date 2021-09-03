@@ -10,7 +10,7 @@ export default function UserTable({ loginUser, onClickUser }) {
             <tr key={idx} onClick={() => onClickUser(loginUser[userData])}>
                 <td>{idx}</td>
                 <td>{loginUser[userData].username}</td>
-                <td>{loginUser[userData].password}</td>
+                <td>{loginUser[userData].salary}</td>
                 <td>{loginUser[userData].isadmin ? 'X' : ''}</td>
             </tr>)
     }
@@ -21,7 +21,7 @@ export default function UserTable({ loginUser, onClickUser }) {
                     <tr>
                         <th>STT</th>
                         <th>Tên tài khoản</th>
-                        <th>Mật khẩu</th>
+                        <th>Lương</th>
                         <th>Quản lý</th>
                     </tr>
                 </thead>
