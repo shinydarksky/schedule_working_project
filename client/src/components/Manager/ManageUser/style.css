@@ -1,0 +1,33 @@
+.manage-user{
+    margin-top: 20px;
+}
+
+.manage-user table{
+    width: 80%;
+    margin: 0 auto;
+}
+
+#table-user th{
+    background-color:#F19C9F;
+    border: 5px solid silver;
+}
+
+#table-user td{
+    background-color:white;
+    border: 5px solid silver;
+}
+
+
+#btn-add-user button{
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: yellow;
+    margin-left: 40px;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+#btn-add-user button:hover{
+    transform: scale(1.1);
+}

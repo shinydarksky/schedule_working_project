@@ -1,0 +1,67 @@
+#group-tool{
+    margin-top: 10px;
+}
+
+#group-tool select{
+    width: 150px;
+    height: 30px;
+    font-size: .8rem;
+    text-align: center;
+    text-align-last: center;
+    margin: 0 10px;
+    outline: none;
+}
+
+
+
+#group-tool button{
+    width: 100px;
+    height: 30px;
+    background-color:greenyellow;
+    border-radius: 5px;
+    outline: none;
+    margin: 0 10px;
+}
+
+#btn-schedule-sort{
+    background-color:orange!important;
+    color: white;
+}
+
+#btn-schedule-delete{
+    background-color:salmon !important;
+    color:white;
+}
+
+#group-tool button:hover{
+    transform: scale(1.1)
+}
+
+#schedule_manage{
+    width: 70%;
+}
+
+
+
+#manage_control{
+    width: 30%;
+    border:1px solid white;
+    margin: 0 10px;
+    
+}
+
+.schedule-manage{
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#manage_control th{
+    background-color:floralwhite;
+    border-color: dodgerblue;
+    font-size: 1rem;
+}
+
+#manage_control td{
+    background-color:floralwhite;
+    border-color: dodgerblue;
+}

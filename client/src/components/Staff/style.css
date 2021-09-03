@@ -1,0 +1,43 @@
+.staff{
+    margin: 10px;
+}
+
+.title{
+    margin: 10px;
+}
+
+.title {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+#staff_table table{
+    width: 100%;
+}
+
+#staff_table td{
+    background-color:white;
+    border: 10px solid #ECFFA3;
+}
+
+
+#staff_table th{
+    background-color:#89D4EF;
+    border: 10px solid #ECFFA3;
+}
+
+#select-week select{
+    width: 150px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
+    padding: 5px;
+    text-align-last:center;
+}
+
+#user-login{
+    display: inline;
+    float: right;
+    font-style:italic;
+}

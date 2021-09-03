@@ -1,0 +1,17 @@
+.form-item{
+    width: 80%;
+}
+
+.btn-is-admin{
+    margin: 10px;
+}
+
+.btn-is-admin label{
+    font-size: 1rem;
+    line-height: 10px;
+}
+
+.login-add button{
+    width: 100px;
+    height: 30px;
+}

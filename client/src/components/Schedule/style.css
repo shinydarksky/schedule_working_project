@@ -1,0 +1,53 @@
+.title h3{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.title h3::before {
+    content: "-------------------- ";
+}
+
+.title h3::after {
+    content: " --------------------";
+}
+
+.schedule{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.schedule table{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.schedule th{
+    min-width: 50px;
+    min-height: 50px;
+    height: 50px;
+    text-align: center; 
+    border: 10px solid #fff795;
+}
+
+.schedule td{
+    min-width: 50px;
+    min-height: 50px;
+    height: 50px;
+    text-align: center; 
+    border: 10px solid #fff795;
+    border-radius: 15px;
+    background: white;
+    color: black;
+}
+
+.schedule th{
+    background-color:#8361FE;
+}
+
+td:first-child{
+    background-color: #FF8F6F;
+}

@@ -1,0 +1,21 @@
+.manager-control{
+    width: 100%;
+    text-align: center;
+    margin-top:20px;
+}
+
+.manager-control button{
+    width: 250px;
+    height: 40px;
+    font-size: .8rem;
+    font-weight: 600;
+    color:white;
+    background-color:dodgerblue;
+    margin: 5px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.manager-control button:hover{
+    transform: scale(1.05);
+}
