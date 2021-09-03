@@ -42,7 +42,7 @@ export default function EditUser({ userData, onClickCancel, onEditUser, showFrom
     }
 
     let editFrom = <div className="edit-user">
-        <p>Sửa thông tin đăng nhập</p>
+        <p className="title">Sửa thông tin đăng nhập</p>
         <form onSubmit={onSubmitEdit}>
             <div className="edit-item">
                 <label >
@@ -56,9 +56,10 @@ export default function EditUser({ userData, onClickCancel, onEditUser, showFrom
                     <input type="text" name="text" value={password} onChange={(onChangePassword)} />
                 </label>
             </div>
-            <div>
-                <label>Quyền admin
+            <div className="btn-checkbox">
+                <label className="group-checkbox">Quyền admin
                     <input type="checkbox" checked={isAdmin} onChange={onClickIsAdmin} />
+                    <span className="checkmark"></span>
                 </label>
             </div>
             <div id="group-btn"> 
@@ -66,6 +67,7 @@ export default function EditUser({ userData, onClickCancel, onEditUser, showFrom
                 <button className="btn-edit" onClick={onClickDelete}>Xóa</button>
                 <button className="btn-edit" onClick={onClickCancel}>Hủy</button>
             </div>
+            <div >Thông tin chi tiết...</div>
         </form>
     </div>
 

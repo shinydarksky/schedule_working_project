@@ -7,7 +7,9 @@ export default function AddSchedule(props) {
             return (
                 <tr key={user._id}>
                     <td>{user.username}</td>
-                    <td> <input value={user._id} type="checkbox" name="user_select" /></td>
+                    <td>
+                        <input className="box-staff" value={user._id} type="checkbox" name="user_select" />
+                    </td>
                 </tr>
             )
         })
@@ -23,8 +25,8 @@ export default function AddSchedule(props) {
                 staffId.push(check.value)
         }
         const postData = {
-            weekName:weekName,
-            staffId:staffId
+            weekName: weekName,
+            staffId: staffId
         }
         props.onAddSChedule(postData)
     }
@@ -33,24 +35,30 @@ export default function AddSchedule(props) {
         <div className="modal-content">
             <h4>Thêm lịch làm việc tuần tiếp theo</h4>
             <div>
-                <form onSubmit={onSubmitAddSchedule}>
-                    <label>
-                        Tên tuần làm việc
-                        <input type="text" name="weekName" />
-                    </label>
-                    <button>Thêm</button>
-                    <p>Danh sách nhân viên nhận lịch sắp xếp</p>
-                    <table border="1">
-                        <thead>
-                            <tr>
-                                <th>Tên tài khoản</th>
-                                <th>Chọn</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {list_staff}
-                        </tbody>
-                    </table>
+                <form onSubmit={onSubmitAddSchedule} >
+                    <div className="group-item">
+                        <label>
+                            Tên tuần:
+                            <input type="text" name="weekName" id="weekName" />
+                        </label>
+                        <button >Thêm</button>
+                    </div>
+                    <div className="overflow-table">
+                        <table border="1" id="table-user" className="schedule-table-user">
+                            <thead>
+                                <tr>
+                                    <td colSpan="2"><p id="text-table">Danh sách nhân viên nhận lịch sắp xếp</p></td>
+                                </tr>
+                                <tr>
+                                    <th>Tên tài khoản</th>
+                                    <th>Chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {list_staff}
+                            </tbody>
+                        </table>
+                    </div>
                 </form>
             </div>
         </div>

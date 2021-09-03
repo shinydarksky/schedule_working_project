@@ -8,21 +8,24 @@
 }
 
 #table-user th{
-    background-color:#F19C9F;
+    background-color:gold;
     border: 5px solid silver;
 }
 
 #table-user td{
     background-color:white;
     border: 5px solid silver;
+    border-radius:0px;
+    margin: 0;
+    padding: 0;
+    cursor:pointer;
 }
-
 
 #btn-add-user button{
     width: 150px;
     height: 30px;
     border-radius: 5px;
-    background-color: yellow;
+    background-color: greenyellow;
     margin-left: 40px;
     margin-top: 10px;
     font-weight: 500;
@@ -30,4 +33,11 @@
 
 #btn-add-user button:hover{
     transform: scale(1.1);
+}
+
+
+.overflow-table{
+    overflow:auto;
+    display: block;
+    height:  500px;
 }

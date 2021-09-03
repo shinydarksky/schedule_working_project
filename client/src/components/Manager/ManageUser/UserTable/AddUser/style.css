@@ -6,12 +6,75 @@
     margin: 10px;
 }
 
-.btn-is-admin label{
-    font-size: 1rem;
-    line-height: 10px;
-}
-
 .login-add button{
     width: 100px;
-    height: 30px;
+    height: 35px;
+    background-color:whitesmoke;
+    border-radius: 5px;
+    font-size: 1rem;
 }
+
+.login-add button:hover{
+    transform: scale(1.1)
+}
+
+
+.group-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .group-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+  }
+  
+  .group-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .group-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .group-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .group-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

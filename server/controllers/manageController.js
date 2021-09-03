@@ -8,7 +8,8 @@ import getSchedule from "./processing/getSchedule.js"
 import getStaff from "./processing/getStaff.js"
 import deleteWeekWeekById from './processing/deleteWeekWeekById.js'
 import createWeekSchedule from "./processing/createWeekSchedule.js"
-import scheduleGreedy from './greedy/scheduleGeedy.js'
+import scheduleGeedy from "./greedy/scheduleGeedy.js"
+
 export const manageStaffControler = async (req, res) => {
     const list_staff_user = await getUser()
     res.status(200).json({ results: list_staff_user })
@@ -85,7 +86,6 @@ export const manageScheduleAddController = async (req, res) => {
 }
 
 import weekModel from "../models/weekModel.js"
-import scheduleGeedy from "./greedy/scheduleGeedy.js"
 export const manageScheduleDeleteController = async (req, res) => {
     try {
         const weekdata = await weekModel.findOne({weekschedule:req.body.scheduleId})

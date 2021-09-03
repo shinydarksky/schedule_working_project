@@ -42,6 +42,9 @@
     border-radius: 15px;
     background: white;
     color: black;
+    word-break: break-all;
+    max-width: 50px;
+    padding:3px;
 }
 
 .schedule th{

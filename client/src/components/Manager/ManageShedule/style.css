@@ -65,3 +65,87 @@
     background-color:floralwhite;
     border-color: dodgerblue;
 }
+
+
+.group-item{
+    margin: 10px;
+}
+
+.group-item label{
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.group-item input{
+    width: 180px;
+    height: 30px;
+    text-indent: 10px;
+    font-size: 1.1rem;
+    margin: 3px 10px;
+
+}
+
+.group-item button{
+    width: 80px;
+    height: 35px;
+    font-size: 1rem;
+    margin: 2px;
+    border-radius: 3px;
+    border: 1px solid cornflowerblue;
+    background-color: aqua;
+    float: right;
+}
+
+.group-item button:hover{
+    transform: scale(1.1);
+    border: 2px solid salmon;
+
+}
+
+#text-table{
+    font-size: 1.2rem;
+    margin: 10px;
+    font-weight: 600;
+}
+
+#table-user{
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+}
+
+#table-user th{
+    text-align: center;
+    border: 1px solid black;
+    height: 50px;
+    /* background-color:greenyellow; */
+    text-align: center;
+}
+
+#table-user td{
+    text-align: center;
+    font-size: 1.1rem;
+    border: 1px solid black;
+    height: 50px;
+}
+
+.schedule-table-user th{
+    background-color: greenyellow !important;
+}
+
+
+.react-confirm-alert-body h1{
+    text-align: center;
+}
+
+.react-confirm-alert-button-group{
+    justify-content: center !important;
+}
+
+.react-confirm-alert-button-group button{
+    height: 35px;
+}
+
+.react-confirm-alert-button-group button:hover{
+    transform: scale(1.3)
+}

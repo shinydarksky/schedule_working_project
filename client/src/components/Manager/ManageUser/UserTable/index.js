@@ -15,7 +15,7 @@ export default function UserTable({ loginUser, onClickUser }) {
             </tr>)
     }
     return (
-        <div className="schedule">
+        <div className="schedule overflow-table">
             <table id="table-user">
                 <thead>
                     <tr>

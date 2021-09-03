@@ -40,9 +40,10 @@ export default function AddUser({ onCLickCloseAddUser, afterAddUser, isAddUser }
                         </label>
                     </div>
                     <div className="btn-is-admin">
-                        <label>
+                        <label className="group-checkbox">
                             Cấp quyền quản lý
                             <input type="checkbox" id="isadmin" name="isadmin" value={isAdmin} onChange={onClickIsAdmin} />
+                            <span className="checkmark"></span>
                         </label>
                     </div>
                     <div className="login-add">
