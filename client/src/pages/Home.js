@@ -51,14 +51,14 @@ export default function Home() {
 
 
     function homePath() {
-        return (!isLogin) ? <Schedule/> : <Redirect to="/user" />
+        return (!isLogin) ? <Schedule /> : <Redirect to="/user" />
     }
 
-    function userPath(){
-        if(isLogin && loginUser.isadmin)
+    function userPath() {
+        if (isLogin && loginUser.isadmin)
             return <Manager />
-        if(isLogin && !loginUser.isadmin)
-            return <Staff loginUser={loginUser}/>
+        if (isLogin && !loginUser.isadmin)
+            return <Staff loginUser={loginUser} />
 
         return <Redirect to="/" />
     }
@@ -72,16 +72,17 @@ export default function Home() {
             />
             <Router>
                 <Switch>
-                    <Route path="/user" render={userPath}/>
+                    <Route path="/user" render={userPath} />
                     <Route path="/" render={homePath} />
                 </Switch>
             </Router>
             <Footer />
-            <LoginForm
-                showLoginFrom={showLoginFrom}
-                onClickloginHide={() => setShowLoginFrom(!showLoginFrom)}
-                onclickLoginType={onclickLoginType}
-            />
+            {showLoginFrom &&
+                <LoginForm
+                    onClickloginHide={() => setShowLoginFrom(!showLoginFrom)}
+                    onclickLoginType={onclickLoginType}
+                />
+            }
         </div>
     )
 }

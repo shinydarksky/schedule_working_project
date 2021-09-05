@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import './style.css'
-export default function LoginForm({ showLoginFrom, onClickloginHide, onclickLoginType }) {
-    
+export default function LoginForm({ onClickloginHide, onclickLoginType }) {
+
     const closeForm = (e) => {
         if (e.target.id === 'myModal')
             onClickloginHide()
@@ -16,15 +16,14 @@ export default function LoginForm({ showLoginFrom, onClickloginHide, onclickLogi
             .then((data) => {
                 if (data.data.login) {
                     const userId = JSON.stringify(data.data.login)
-                    localStorage.setItem('userlogin',userId)
+                    localStorage.setItem('userlogin', userId)
                     onclickLoginType(data.data.login)
                 }
             })
         onClickloginHide()
     }
 
-
-    let loginForm =
+    return (
         <div id="myModal" className="modal" onClick={closeForm}>
             <div className="modal-content">
                 <form id="formLogin" onSubmit={onSubmitLoginForm}>
@@ -51,9 +50,5 @@ export default function LoginForm({ showLoginFrom, onClickloginHide, onclickLogi
                 </form>
             </div>
         </div>
-    return (
-        <>
-            {showLoginFrom ? loginForm : ''}
-        </>
     )
 }

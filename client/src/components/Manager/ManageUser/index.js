@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import './style.css'
 import UserTable from './UserTable'
 import AddUser from './UserTable/AddUser'
 import EditUser from './UserTable/EditUser'
@@ -9,7 +8,7 @@ export default function ManageUser() {
     const [isAddUser, setIsAddUser] = useState(false)
     const [showFromEdit, setShowFromEdit] = useState(false)
     const [editUser, setEditUser] = useState()
-    
+
     useEffect(() => {
         axios.get('http://localhost:5000/manage/staff')
             .then((data) => {
@@ -41,11 +40,11 @@ export default function ManageUser() {
         setShowFromEdit(false)
     }
 
-    function deleteUser(userId){
-        axios.post('http://localhost:5000/manage/staff/deleteuser',{userId:userId})
-        .then((data) => {
-            setLoginUser(data.data.results)
-        })
+    function deleteUser(userId) {
+        axios.post('http://localhost:5000/manage/staff/deleteuser', { userId: userId })
+            .then((data) => {
+                setLoginUser(data.data.results)
+            })
         setShowFromEdit(false)
     }
 
@@ -56,24 +55,26 @@ export default function ManageUser() {
                     Thêm tài khoản
                 </button>
             </div>
-            <EditUser
-                userData={editUser}
-                onClickCancel={() => setShowFromEdit(false)}
-                onEditUser={onEditUser}
-                showFromEdit={showFromEdit}
-                deleteUser={deleteUser}
-            />
+            {showFromEdit &&
+                <EditUser
+                    userData={editUser}
+                    onClickCancel={() => setShowFromEdit(false)}
+                    onEditUser={onEditUser}
+                    deleteUser={deleteUser}
+                />
+            }
             <div className="manage-user">
                 <UserTable
                     loginUser={loginUser}
                     onClickUser={onClickEditUser}
                 />
-                <AddUser
+            </div>
+            {isAddUser &&
+                < AddUser
                     onCLickCloseAddUser={onCLickCloseAddUser}
                     afterAddUser={afterAddUser}
-                    isAddUser={isAddUser}
                 />
-            </div>
+            }
         </div>
     )
 }

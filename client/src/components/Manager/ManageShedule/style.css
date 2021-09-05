@@ -1,3 +1,4 @@
+/* tool bar manage */
 #group-tool{
     margin-top: 10px;
 }
@@ -6,66 +7,37 @@
     width: 150px;
     height: 30px;
     font-size: .8rem;
-    text-align: center;
     text-align-last: center;
     margin: 0 10px;
+    color: #007bff;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #007bff;
     outline: none;
 }
 
-
+#group-tool select option{
+    font-size: 1rem;
+    border: 10px solid white;
+}
 
 #group-tool button{
-    width: 100px;
+    width: 90px;
     height: 30px;
-    background-color:greenyellow;
+    background-color:#3cd8ff;
     border-radius: 5px;
     outline: none;
-    margin: 0 10px;
-}
-
-#btn-schedule-sort{
-    background-color:orange!important;
-    color: white;
-}
-
-#btn-schedule-delete{
-    background-color:salmon !important;
-    color:white;
+    margin: 0 5px;
+    color:  white;
+    display: inline-block;
 }
 
 #group-tool button:hover{
     transform: scale(1.1)
 }
 
-#schedule_manage{
-    width: 70%;
-}
 
-
-
-#manage_control{
-    width: 30%;
-    border:1px solid white;
-    margin: 0 10px;
-    
-}
-
-.schedule-manage{
-    flex-direction: row;
-    align-items: flex-start;
-}
-
-#manage_control th{
-    background-color:floralwhite;
-    border-color: dodgerblue;
-    font-size: 1rem;
-}
-
-#manage_control td{
-    background-color:floralwhite;
-    border-color: dodgerblue;
-}
-
+/* add schedule */
 
 .group-item{
     margin: 10px;
@@ -98,41 +70,26 @@
 
 .group-item button:hover{
     transform: scale(1.1);
-    border: 2px solid salmon;
+}
 
+input.box-staff{
+    transform: scale(2)
+}
+
+input.box-staff:hover{
+    transform: scale(2.1);
+    cursor:pointer;
 }
 
 #text-table{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 10px;
-    font-weight: 600;
-}
-
-#table-user{
-    width: 100%;
-    margin-top: 20px;
+    background-color: white;
     border: none;
 }
 
-#table-user th{
-    text-align: center;
-    border: 1px solid black;
-    height: 50px;
-    /* background-color:greenyellow; */
-    text-align: center;
-}
 
-#table-user td{
-    text-align: center;
-    font-size: 1.1rem;
-    border: 1px solid black;
-    height: 50px;
-}
-
-.schedule-table-user th{
-    background-color: greenyellow !important;
-}
-
+/* delete schedule */
 
 .react-confirm-alert-body h1{
     text-align: center;
@@ -148,4 +105,45 @@
 
 .react-confirm-alert-button-group button:hover{
     transform: scale(1.3)
+}
+
+
+/* schedule area */
+.schedule-manage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.schedule-table{
+    width: 75%;
+}
+
+.schedule-staff{
+    margin: 10px;
+    margin-top: 20px;
+    height: 220px;
+    overflow: auto;
+}
+
+.schedule-staff table{
+    border-collapse: collapse;
+    display: block;
+    border:none
+}
+
+.schedule-staff th{
+    background-color:rgba(50, 123, 207, 0.671);
+    color: white;
+}
+
+.schedule-staff th, 
+.schedule-staff td{
+    padding: 0 10px;
+    height: 40px;
+    text-align: center;
+    word-break: break-all;
+    max-width: 100px;
+    border: 2px solid rgb(0, 183, 255);
 }

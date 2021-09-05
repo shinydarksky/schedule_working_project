@@ -30,9 +30,8 @@
     margin-top: 20px;
     border-radius: 5px;
     border: 2px solid white;
-    background-color:salmon;
-    color:white;
-    font-weight: 600;
+    background-color:cyan;
+    font-weight: 400;
 }
 
 .btn-edit:hover{

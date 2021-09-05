@@ -1,16 +1,14 @@
 import React from 'react'
 
-export default function Schedule({schedule}) {
+export default function Schedule({ schedule }) {
 
     function removeUndefine(s) {
         if (s) return s
         return ''
     }
-
     function get_name(data, timeId) {
         return removeUndefine(data[timeId][0]) + removeUndefine(data[timeId][1])
     }
-
     let idx = 0
     let staff_morning = [<td key='0'>Buổi sáng</td>]
     let staff_afternoon = [<td key='0'>Buổi chiều</td>]
@@ -26,8 +24,8 @@ export default function Schedule({schedule}) {
     }
 
     return (
-        <div className="schedule schedule-manage">
-            <table border="1" id="schedule_manage">
+        <div className="schedule">
+            <table border="1">
                 <thead id="table-head">
                     <tr>
                         <th>Ca</th>
@@ -52,27 +50,7 @@ export default function Schedule({schedule}) {
                     </tr>
                 </tbody>
             </table>
-            <div id="manage_control">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Danh sách nhân viên</th>
-                            <th>Số buổi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>123</p>
-                                <p>123</p>
-                                <p>123</p>
-                                <p>123</p>
-                                <p>123</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
+
     )
 }

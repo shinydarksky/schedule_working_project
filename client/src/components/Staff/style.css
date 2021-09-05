@@ -15,17 +15,6 @@
     width: 100%;
 }
 
-#staff_table td{
-    background-color:white;
-    border: 10px solid #ECFFA3;
-}
-
-
-#staff_table th{
-    background-color:#89D4EF;
-    border: 10px solid #ECFFA3;
-}
-
 #select-week select{
     width: 150px;
     height: 30px;

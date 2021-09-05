@@ -13,10 +13,7 @@
 
 .schedule{
     margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    display: block;
 }
 
 .schedule table{
@@ -30,27 +27,21 @@
     min-height: 50px;
     height: 50px;
     text-align: center; 
-    border: 10px solid #fff795;
+    border: 2px solid #48c6ef;
+    background-color: aqua;
 }
 
 .schedule td{
-    min-width: 50px;
-    min-height: 50px;
     height: 50px;
     text-align: center; 
-    border: 10px solid #fff795;
-    border-radius: 15px;
-    background: white;
+    border: 2px solid #48c6ef;
     color: black;
     word-break: break-all;
     max-width: 50px;
     padding:3px;
 }
 
-.schedule th{
-    background-color:#8361FE;
-}
 
 td:first-child{
-    background-color: #FF8F6F;
+    background-color:#b1ecff;
 }

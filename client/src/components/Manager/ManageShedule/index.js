@@ -100,7 +100,6 @@ export default function ManageShedule() {
     }
 
     function onCickScheduleSort() {
-        
         axios.post('http://localhost:5000/manage/schedule/greedy', { scheduleId: scheduleId })
             .then((data) => {
                 // setSchedule(data.data.results)
@@ -121,20 +120,54 @@ export default function ManageShedule() {
                 <button onClick={onClickAddSchedule}>
                     Thêm lịch
                 </button>
-                <button id="btn-schedule-sort" onClick={onCickScheduleSort}>
+                <button onClick={onCickScheduleSort}>
                     Sắp xếp lịch
                 </button>
-                <button id="btn-schedule-delete" onClick={onDelete}>
+                <button onClick={onDelete}>
                     Xóa lịch
                 </button>
             </div>
-            <Schedule schedule={schedule} />
-            <AddSchedule
-                showFromAddSchedule={showFromAddSchedule}
-                clickCloseFrom={clickCloseFrom}
-                userData={userData}
-                onAddSChedule={onAddSChedule}
-            />
+
+            <div className="schedule-manage">
+                <div className="schedule-table">
+                    <Schedule schedule={schedule} />
+                </div>
+                <div className="schedule-staff">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Nhân viên</th>
+                                <th>Số ca</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123ádassdaádaádddddddddddddddddddsđásdasds</td>
+                                <td>123</td>
+                            </tr>
+                            <tr>
+                                <td>123ádassdaádaádddddddddddddddddddsđásdasds</td>
+                                <td>123</td>
+                            </tr>
+                            <tr>
+                                <td>123ádassdaádaádddddddddddddddddddsđásdasds</td>
+                                <td>123</td>
+                            </tr>
+                            <tr>
+                                <td>123ádassdaádaádddddddddddddddddddsđásdasds</td>
+                                <td>123</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {showFromAddSchedule &&
+                <AddSchedule
+                    clickCloseFrom={clickCloseFrom}
+                    userData={userData}
+                    onAddSChedule={onAddSChedule}
+                />
+            }
         </div>
     )
 }

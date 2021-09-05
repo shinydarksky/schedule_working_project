@@ -8,7 +8,7 @@ export default function UserTable({ loginUser, onClickUser }) {
         idx++
         list_user.push(
             <tr key={idx} onClick={() => onClickUser(loginUser[userData])}>
-                <td>{idx}</td>
+                <td className="table-num">{idx}</td>
                 <td>{loginUser[userData].username}</td>
                 <td>{loginUser[userData].salary}</td>
                 <td>{loginUser[userData].isadmin ? 'X' : ''}</td>
