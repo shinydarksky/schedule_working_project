@@ -7,7 +7,7 @@ export default function Schedule({ schedule }) {
         return ''
     }
     function get_name(data, timeId) {
-        return removeUndefine(data[timeId][0]) + removeUndefine(data[timeId][1])
+        return removeUndefine(data[timeId][0]) +' '+ removeUndefine(data[timeId][1])
     }
     let idx = 0
     let staff_morning = [<td key='0'>Buổi sáng</td>]

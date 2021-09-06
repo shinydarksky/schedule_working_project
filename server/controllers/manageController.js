@@ -102,12 +102,10 @@ export const manageScheduleDeleteController = async (req, res) => {
 export const manageScheduleGreedyController = async (req, res) => {
     try {
         const weekData = await weekModel.findOne({weekschedule:req.body.scheduleId})
-        // await deleteWeekWeekById(weekdata._id)
-        // let schedule = await getOneWeek()
-        // let week = await getWeek()
-        // res.status(200).json({ results: schedule, week: week })
         await scheduleGeedy(weekData._id)
-        res.send('123')
+        const {scheduleId} = req.body
+        const schedule = await getSchedule(scheduleId)
+        res.status(200).json({ results:schedule})
     } catch (error) {
         return error
     }

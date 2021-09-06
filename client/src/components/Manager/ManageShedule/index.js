@@ -102,9 +102,7 @@ export default function ManageShedule() {
     function onCickScheduleSort() {
         axios.post('http://localhost:5000/manage/schedule/greedy', { scheduleId: scheduleId })
             .then((data) => {
-                // setSchedule(data.data.results)
-                // setWeek(data.data.week)
-                // setScheduleId(data.data.week[0].weekschedule)
+                setSchedule(data.data.results)
             })
             .catch((err) => {
                 alert(err)

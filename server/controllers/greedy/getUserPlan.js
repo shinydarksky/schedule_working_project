@@ -9,14 +9,12 @@ async function getUserPlan(weekStaff) {
             if (staff_mark[timeId]) {
                 results.push({
                     dayId: dayId,
-                    partId:staff_mark._id,
                     timeId: timeId,
-                    staffid: weekStaff.staffid
                 })
             }
         }
     }
-    return results.sort()
+    return results.sort().reverse()
 }
 
 export default getUserPlan

@@ -5,7 +5,7 @@ import staffScheduleModel from '../../models/staffScheduleModel.js'
 import partTimeMarkModel from '../../models/partTimeMarkModel.js'
 async function deleteWeekWeekById(weekId) {
     try {
-        let list_week = ['monday', 'twesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+        const list_week = ['monday', 'twesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         let week = await weekModel.findById(weekId)
         let weekschedule = await scheduleModel.findById(week.weekschedule)
         for (let day of list_week) {

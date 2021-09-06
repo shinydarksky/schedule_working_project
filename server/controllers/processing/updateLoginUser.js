@@ -4,8 +4,15 @@ import loginModel from '../../models/loginModel.js'
 const updateLoginUser = async (userUpdate) => {
     try {
         const userId = userUpdate._id
-        const { username, password, isAdmin } = userUpdate
-        await loginModel.findByIdAndUpdate(userId, { username: username, password: password, isadmin: isAdmin })
+        const { fullname, username, password, salary, isAdmin } = userUpdate
+        await loginModel.findByIdAndUpdate(userId,
+            {
+                fullname: fullname,
+                username: username,
+                password: password,
+                salary: salary,
+                isadmin: isAdmin
+            })
         const list_user = await loginModel.find()
         return list_user
     } catch (error) {

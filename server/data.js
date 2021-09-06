@@ -314,7 +314,7 @@ async function scheduleGeedy(weekId) {
 
 // getOneWeekStaff('6123b49af19c5b25e0de0a67').then((data)=>{console.log(data)})
 
-// setPartTime()
+// setPartTime('61349e018f93da4228a2d4dc','morning','loc')
 
 // async function test(){
 //     loginModel.findByIdAndUpdate('61262b5e03d7433e941e33e3',{username:'user5',password:'te123'})

@@ -31,8 +31,10 @@ export default function EditUser({ userData, onClickCancel, onEditUser, deleteUs
     function onSubmitEdit(e) {
         e.preventDefault()
         const userUpdateData = {
+            fullname: userUpdate.fullname,
             username: userUpdate.username,
             password: userUpdate.password,
+            salary:userUpdate.salary,
             isAdmin: isAdmin,
             _id: userData._id
         }
