@@ -14,10 +14,10 @@ export default function LoginForm({ onClickloginHide, onclickLoginType }) {
         const password = e.target.password.value
         axios.post('http://localhost:5000/login', { username: username, password: password })
             .then((data) => {
-                if (data.data.login) {
-                    const userId = JSON.stringify(data.data.login)
-                    localStorage.setItem('userlogin', userId)
-                    onclickLoginType(data.data.login)
+                if (data.data.results) {
+                    const userId = JSON.stringify(data.data.results)
+                    localStorage.setItem('userlogin',userId)
+                    onclickLoginType(data.data.results)
                 }
             })
         onClickloginHide()

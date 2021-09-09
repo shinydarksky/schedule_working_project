@@ -17,7 +17,6 @@ export default function Staff({ loginUser }) {
                     alert(err)
                 })
         }
-
     }, [loginUser, setStaffWeek])
 
     function onClickChangePlan(partTimeId, timeId, status) {

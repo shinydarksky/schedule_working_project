@@ -75,9 +75,11 @@ async function scheduleGeedy(weekId) {
             while (staff.staffMark.length > 0 && num_shift[staff.staffName] < flag_max.num_max+1) {
                 let mark = staff.staffMark.pop()
                 let isArrange = await setPartTime(schedule[mark.dayId], mark.timeId, staff.staffName)
-                if(isArrange)
-                num_shift[staff.staffName]++
-                break
+                console.log(schedule[mark.dayId], mark.timeId, staff.staffName)
+                if(isArrange){
+                    num_shift[staff.staffName]++
+                    break
+                }
             }
             if (staff.staffMark.length == 0 && !flag_max.is_max) {
                 flag_max.num_max = num_shift[staff.staffName]
@@ -86,7 +88,7 @@ async function scheduleGeedy(weekId) {
         }
     }
     console.log(flag_max.num_max)
-    console.log(num_shift);
+    console.log(num_shift)
 }
 
 export default scheduleGeedy

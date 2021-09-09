@@ -5,8 +5,7 @@ import LoginForm from '../components/LoginForm'
 import Schedule from '../components/Schedule'
 import Manager from '../components/Manager'
 import Staff from '../components/Staff'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect,useContext } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,30 +13,25 @@ import {
     Redirect,
 } from "react-router-dom";
 import './style.css'
+import { AuthContext } from '../contexts/auth.js'
+
 export default function Home() {
+    const {stateUser:isAuthor} = useContext(AuthContext)
+    console.log(isAuthor);
     const [showLoginFrom, setShowLoginFrom] = useState(false)
     const [isLogin, setisLogin] = useState(false)
     const [loginUser, setLoginUser] = useState()
 
     useEffect(() => {
-        const userId = JSON.parse(sessionStorage.getItem('userlogin'))
-        sessionStorage.removeItem('userlogin')
+        const userId = JSON.parse(localStorage.getItem('userlogin'))
         if (userId) {
-            axios.get('http://localhost:5000/login/userrefresh?userid=' + userId)
-                .then((data) => {
-                    onclickLoginType(data.data.results)
-                })
-                .catch((err) => {
-                    alert(err)
-                })
+            onclickLoginType(userId)
         }
     }, [])
-
     function onclickLoginType(type) {
         try {
             setLoginUser(type)
             setisLogin(true)
-            sessionStorage.setItem('userlogin', JSON.stringify(type._id))
         } catch (error) {
             setisLogin(false)
         }
@@ -46,21 +40,25 @@ export default function Home() {
 
     function onclickLogout() {
         setisLogin(false)
-        sessionStorage.removeItem('userlogin')
+        setLoginUser({})
+        localStorage.removeItem('userlogin')
     }
-
 
     function homePath() {
         return (!isLogin) ? <Schedule /> : <Redirect to="/user" />
     }
 
-    function userPath() {
-        if (isLogin && loginUser.isadmin)
-            return <Manager />
-        if (isLogin && !loginUser.isadmin)
-            return <Staff loginUser={loginUser} />
-
+   function userPath() {                                                                                                 
+        try {
+            if (isLogin && loginUser.isadmin)
+                return <Manager />
+            if (isLogin && !loginUser.isadmin)
+                return <Staff loginUser={loginUser} />
+        } catch (e) {
+            return <Redirect to="/" />
+        }
         return <Redirect to="/" />
+
     }
 
     return (
