@@ -76,7 +76,7 @@ export const manageScheduleStaffController = async (req, res) => {
 export const manageScheduleAddController = async (req, res) => {
     try {
         const {weekName} = req.body
-        const result = createWeekSchedule(weekName)
+        createWeekSchedule(weekName)
         let schedule = await getOneWeek()
         let week = await getWeek()
         res.status(200).json({ results: schedule, week: week })

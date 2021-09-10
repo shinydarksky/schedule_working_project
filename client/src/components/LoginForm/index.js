@@ -1,8 +1,8 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../contexts/auth'
 import './style.css'
-export default function LoginForm({ onClickloginHide, onclickLoginType }) {
-
+export default function LoginForm({ onClickloginHide }) {
+    const { onLogin } = useContext(AuthContext)
     const closeForm = (e) => {
         if (e.target.id === 'myModal')
             onClickloginHide()
@@ -12,14 +12,7 @@ export default function LoginForm({ onClickloginHide, onclickLoginType }) {
         e.preventDefault()
         const username = e.target.username.value
         const password = e.target.password.value
-        axios.post('http://localhost:5000/login', { username: username, password: password })
-            .then((data) => {
-                if (data.data.results) {
-                    const userId = JSON.stringify(data.data.results)
-                    localStorage.setItem('userlogin',userId)
-                    onclickLoginType(data.data.results)
-                }
-            })
+        onLogin({username,password})
         onClickloginHide()
     }
 

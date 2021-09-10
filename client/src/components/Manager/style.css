@@ -9,12 +9,7 @@
     height: 40px;
     font-size: .8rem;
     font-weight: 600;
-    color:dodgerblue;
-}
-
-.manager-control button:active{
-    background-color:dodgerblue;
-    color: white !important;
+    cursor: pointer;
 }
 
 .manager-control button:hover{

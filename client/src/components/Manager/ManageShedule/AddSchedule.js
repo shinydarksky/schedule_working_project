@@ -19,10 +19,10 @@ export default function AddSchedule(props) {
         try {
             const weekName = e.target.weekName.value
             let staffId = []
-            for (let check of e.target.user_select) {
-                if (check.checked)
-                    staffId.push(check.value)
-            }
+            // for (let check of e.target.user_select) {
+            //     if (check.checked)
+            //         staffId.push(check.value)
+            // }
             const postData = {
                 weekName: weekName,
                 staffId: staffId

@@ -8,10 +8,17 @@ const authReducer = (state=INIT_STATE, action) => {
         case 'SET-LOGIN': {
             return {
                 ...state,
-                isAuthor:true
+                isAuthor:true,
+                user:action.user
             }
         }
-
+        case 'SET-LOGOUT': {
+            return {
+                ...state,
+                isAuthor:false,
+                user:null
+            }
+        }
         default: {
             return state
         }
