@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer } from "react";
 import authReducer from "../reducers/authReducer";
 import axios from 'axios'
+import { apiUrl } from "./constrant";
 export const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
@@ -18,7 +19,7 @@ const AuthContextProvider = ({ children }) => {
     }
 
     const onLogin = async ({ username, password }) => {
-        await axios.post('http://localhost:5000/login', { username: username, password: password })
+        await axios.post(`${apiUrl}/login`, { username: username, password: password })
         .then((data) => {
             if (data.data.results) {
                 const userId = JSON.stringify(data.data.results)

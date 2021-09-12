@@ -2,12 +2,14 @@ import { createContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { apiUrl } from './constrant';
 export const ScheduleContext = createContext()
 
 const ScheduleContextProvier = ({ children }) => {
     const [schedule, setSchedule] = useState({})
     const [week, setWeek] = useState()
     const [scheduleId, setScheduleId] = useState()
+    const [shiftSchedule, setShiftSchedule] = useState()
     useEffect(() => {
         homeSchedule()
     }, [])
@@ -18,7 +20,13 @@ const ScheduleContextProvier = ({ children }) => {
     }
 
     function get_name(data, timeId) {
-        return removeUndefine(data[timeId][0]) + removeUndefine(data[timeId][1])
+        return (
+            <>
+                <p>{data[timeId][0] && '-' + removeUndefine(data[timeId][0])}</p>
+                <p>{data[timeId][1] && '-' + removeUndefine(data[timeId][1])}</p>
+            </>
+        )
+
     }
 
     let idx = 0
@@ -38,6 +46,22 @@ const ScheduleContextProvier = ({ children }) => {
         }
     }
 
+    // load shift staff
+    let listStaffShift = []
+    let shiftIdx = 0
+    if (shiftSchedule) {
+        for (let shift in shiftSchedule.shift) {
+            shiftIdx++
+            listStaffShift.push(
+                <tr key={shiftIdx}>
+                    <td>{shift}</td>
+                    <td>{shiftSchedule.shift[shift]}</td>
+                </tr>
+            );
+        }
+    }
+
+
     // load week 
     let week_select = []
 
@@ -49,6 +73,7 @@ const ScheduleContextProvier = ({ children }) => {
         })
     }
 
+
     function onChangeWeek(e) {
         const Id = e.target.value
         setScheduleId(Id)
@@ -57,22 +82,25 @@ const ScheduleContextProvier = ({ children }) => {
 
     // on load schedule
     const homeSchedule = async () => {
-        await axios.get('http://localhost:5000/manage/schedule')
+        await axios.get(`${apiUrl}/manage/schedule`)
             .then((data) => {
                 setSchedule(data.data.results)
                 setWeek(data.data.week)
                 setScheduleId(data.data.week[0].weekschedule)
+                setShiftSchedule(data.data.shift_staff);
             })
             .catch((err) => {
                 alert(err)
             })
+
     }
-    
+
     // on change schedule
-    const changeSchedule = Id => {
-        axios.post('http://localhost:5000/manage/schedule/change', { scheduleId: Id })
+    const changeSchedule = async Id => {
+        await axios.post(`${apiUrl}/manage/schedule/change`, { scheduleId: Id })
             .then((data) => {
                 setSchedule(data.data.results)
+                setShiftSchedule(data.data.shift_staff)
             })
             .catch((err) => {
                 alert(err)
@@ -87,7 +115,7 @@ const ScheduleContextProvier = ({ children }) => {
                 {
                     label: 'Xác nhận',
                     onClick: async () => {
-                        await axios.post('http://localhost:5000/manage/schedule/delete', { scheduleId: scheduleId })
+                        await axios.post(`${apiUrl}/manage/schedule/delete`, { scheduleId: scheduleId })
                             .then((data) => {
                                 setWeek(data.data.week)
                                 changeSchedule(data.data.week[0].weekschedule)
@@ -107,7 +135,7 @@ const ScheduleContextProvier = ({ children }) => {
 
     // on add schedule
     const onAddSChedule = async dataSchedule => {
-        await axios.post('http://localhost:5000/manage/schedule/add', dataSchedule)
+        await axios.post(`${apiUrl}/manage/schedule/add`, dataSchedule)
             .then((data) => {
                 setWeek(data.data.week)
                 changeSchedule(data.data.week[0].weekschedule)
@@ -120,13 +148,41 @@ const ScheduleContextProvier = ({ children }) => {
 
     // schedule sorting
     const onCickScheduleSort = async () => {
-        await axios.post('http://localhost:5000/manage/schedule/greedy', { scheduleId: scheduleId })
-            .then((data) => {
-                changeSchedule(scheduleId)
-            })
-            .catch((err) => {
-                alert(err)
-            })
+
+        confirmAlert({
+            title: 'Loại sắp xếp',
+            buttons: [
+                {
+                    label: 'Số ca cân bằng',
+                    onClick: async () => {
+                        await axios.post(`${apiUrl}/manage/schedule/greedy`, { scheduleId: scheduleId,type:1     })
+                            .then((data) => {
+                                changeSchedule(scheduleId)
+                                setShiftSchedule(data.data.shift_staff)
+                            })
+                            .catch((err) => {
+                                alert(err)
+                            })
+                    }
+                },
+                {
+                    label: 'Số ca hợp lý',
+                    onClick: async () => {
+                        await axios.post(`${apiUrl}/manage/schedule/greedy`, { scheduleId: scheduleId,type:0 })
+                            .then((data) => {
+                                changeSchedule(scheduleId)
+                                setShiftSchedule(data.data.shift_staff)
+                            })
+                            .catch((err) => {
+                                alert(err)
+                            })
+                    }
+                },
+                {
+                    label: 'Hủy'
+                }
+            ]
+        })
     }
 
     // context data 
@@ -138,7 +194,8 @@ const ScheduleContextProvier = ({ children }) => {
         onChangeWeek,
         onDelete,
         onAddSChedule,
-        onCickScheduleSort
+        onCickScheduleSort,
+        listStaffShift
     }
 
     return (

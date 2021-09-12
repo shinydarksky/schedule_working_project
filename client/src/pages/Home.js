@@ -15,7 +15,7 @@ import './style.css'
 import { AuthContext } from '../contexts/auth.js'
 
 export default function Home() {
-    const {stateUser:{isAuthor,user},onLogout} = useContext(AuthContext)
+    const {stateUser:{isAuthor,user},onLogout}   = useContext(AuthContext)
     const [showLoginFrom, setShowLoginFrom] = useState(false)
 
     function homePath() {

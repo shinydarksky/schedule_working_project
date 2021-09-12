@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ManageUser from './ManageUser'
 import ManageShedule from './ManageShedule'
 import './style.css'
+import StaffContextProvider from '../../contexts/staff'
 export default function Manager() {
 
     const styles = {
@@ -15,25 +16,25 @@ export default function Manager() {
         }
     }
     const [typeManager, setTypeManager] = useState(false)
-    const [styleButton,setStyleButton] = useState({
-        user:styles.active,
-        schedule:styles.deactive
+    const [styleButton, setStyleButton] = useState({
+        user: styles.active,
+        schedule: styles.deactive
     })
 
-    
+
     function onCLickButtonManage(type) {
         if (type === 'user') {
             setTypeManager(false)
             setStyleButton({
-                user:styles.active,
-                schedule:styles.deactive
+                user: styles.active,
+                schedule: styles.deactive
             })
         }
         else if (type === 'schedule') {
             setTypeManager(true)
             setStyleButton({
-                user:styles.deactive,
-                schedule:styles.active
+                user: styles.deactive,
+                schedule: styles.active
             })
         }
     }
@@ -46,8 +47,10 @@ export default function Manager() {
                     <button onClick={() => onCLickButtonManage('schedule')} style={styleButton.schedule}>Quản lý và sắp xếp lịch làm việc</button>
                 </div>
                 <div>
-                    {!typeManager && <ManageUser />}
-                    {typeManager && <ManageShedule />}
+                    <StaffContextProvider>
+                        {!typeManager && <ManageUser />}
+                        {typeManager && <ManageShedule />}
+                    </StaffContextProvider>
                 </div>
             </div>
         </div>

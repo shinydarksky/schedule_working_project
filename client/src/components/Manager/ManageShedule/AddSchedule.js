@@ -7,7 +7,7 @@ export default function AddSchedule(props) {
                 <tr key={user._id}>
                     <td>{user.username}</td>
                     <td>
-                            <input className="box-staff" value={user._id} type="checkbox" name="user_select" />
+                        <input className="box-staff" value={user._id} type="checkbox" name="user_select" />
                     </td>
                 </tr>
             )
@@ -19,10 +19,10 @@ export default function AddSchedule(props) {
         try {
             const weekName = e.target.weekName.value
             let staffId = []
-            // for (let check of e.target.user_select) {
-            //     if (check.checked)
-            //         staffId.push(check.value)
-            // }
+            for (let check of e.target.user_select) {
+                if (check.checked)
+                    staffId.push(check.value)
+            }
             const postData = {
                 weekName: weekName,
                 staffId: staffId
@@ -39,8 +39,8 @@ export default function AddSchedule(props) {
                 <h4>Thêm lịch làm việc tuần tiếp theo</h4>
                 <form onSubmit={onSubmitAddSchedule} >
                     <div className="group-item">
-                            Tên tuần:
-                            <input type="text" name="weekName" id="weekName" />
+                        Tên tuần:
+                        <input type="text" name="weekName" id="weekName" />
                         <button >Thêm</button>
                     </div>
                     <div className="schedule overflow-table">

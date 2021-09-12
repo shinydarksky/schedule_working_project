@@ -1,4 +1,5 @@
 import React from 'react'
+import { logoText } from '../../contexts/constrant'
 import './style.css'
 export default function Header({ onclickLogin, onclickLogout, isLogin }) {
 
@@ -6,7 +7,7 @@ export default function Header({ onclickLogin, onclickLogout, isLogin }) {
     return (
         <div id="header">
             <div className="header-logo">
-                <p>Coffee Shop C</p>
+                <p>{logoText}</p>
             </div>
             <div className="header-content">
                 <ul className="menu">

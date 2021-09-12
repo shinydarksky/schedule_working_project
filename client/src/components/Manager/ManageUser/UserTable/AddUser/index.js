@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import './style.css'
-export default function AddUser({ onCLickCloseAddUser, afterAddUser }) {
+export default function AddUser({ onCLickCloseAddUser}) {
     const [isAdmin, setIsAdmin] = useState(false)
-
+    
     function onClickAddUser(e) {
         e.preventDefault()
         const addUserData = {
@@ -11,17 +10,21 @@ export default function AddUser({ onCLickCloseAddUser, afterAddUser }) {
             password: e.target.password.value,
             isadmin: e.target.isadmin.value
         }
-        axios.post('http://localhost:5000/manage/staff/adduser', addUserData)
-            .then((data) => {
-                afterAddUser(data.data.results)
-            })
+        onCLickCloseAddUser(addUserData)
     }
+
+    function onClickClose(e){
+        if (e.target.id === 'myModal') {
+            onCLickCloseAddUser()
+        }
+    }
+
     function onClickIsAdmin(e) {
         setIsAdmin(e.target.checked)
     }
 
     return (
-        <div id="myModal" className="modal" onClick={onCLickCloseAddUser}>
+        <div id="myModal" className="modal" onClick={onClickClose}>
             <div className="modal-content" >
                 <form onSubmit={onClickAddUser}>
                     <div className="form-layout">

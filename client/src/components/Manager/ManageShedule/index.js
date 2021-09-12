@@ -3,15 +3,17 @@ import './style.css'
 import Schedule from './Schedule'
 import AddSchedule from './AddSchedule'
 import { ScheduleContext } from '../../../contexts/schedule'
+import { StaffContext } from '../../../contexts/staff'
 export default function ManageShedule() {
-    const [userData, setUserData] = useState()
+    const { listUser } = useContext(StaffContext)
     const [showFromAddSchedule, setShowFromAddSchedule] = useState(false)
     const {
         week_select,
         onChangeWeek,
         onDelete,
         onAddSChedule,
-        onCickScheduleSort
+        onCickScheduleSort,
+        listStaffShift
     } = useContext(ScheduleContext)
 
     function clickCloseFrom(e) {
@@ -23,6 +25,7 @@ export default function ManageShedule() {
         onAddSChedule(dataSchedule)
         setShowFromAddSchedule(false)
     }
+
 
     return (
         <div>
@@ -54,10 +57,7 @@ export default function ManageShedule() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>123ádassdaádaádddddddddddddddddddsđásdasds</td>
-                                <td>123</td>
-                            </tr>
+                            {listStaffShift}
                         </tbody>
                     </table>
                 </div>
@@ -65,8 +65,8 @@ export default function ManageShedule() {
             {showFromAddSchedule &&
                 <AddSchedule
                     clickCloseFrom={clickCloseFrom}
-                    userData={userData}
                     onAddSChedule={AddSChedule}
+                    userData={listUser}
                 />
             }
         </div>

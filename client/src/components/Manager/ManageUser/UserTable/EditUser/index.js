@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-export default function EditUser({ userData, onClickCancel, onEditUser, deleteUser }) {
+import { useContext } from 'react'
+import { StaffContext } from '../../../../../contexts/staff'
+export default function EditUser({ userData, onClickCancel}) {
     const [isAdmin, setIsAdmin] = useState(false)
+    const {EditUser,deleteUser} = useContext(StaffContext)
     let [userUpdate, setUserUpdate] = useState({
         fullname: '',
         username: '',
@@ -38,8 +41,8 @@ export default function EditUser({ userData, onClickCancel, onEditUser, deleteUs
             isAdmin: isAdmin,
             _id: userData._id
         }
-        console.log(userUpdateData)
-        onEditUser(userUpdateData)
+        EditUser(userUpdateData)
+        onClickCancel()
     }
 
     function onClickIsAdmin(e) {
@@ -49,6 +52,7 @@ export default function EditUser({ userData, onClickCancel, onEditUser, deleteUs
     function onClickDelete(e) {
         e.preventDefault()
         deleteUser(userData)
+        onClickCancel()
     }
 
     return (
